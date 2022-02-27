@@ -103,7 +103,7 @@ PROGRAM leakage
 !	read *,Bzimf
 !	Bzimf=7
       Bzimf=-10
-	Print *,'Input the total time of Magnetic Storm' !´Å±©Ò»°ã³ÖĞø1-3Ìì
+	Print *,'Input the total time of Magnetic Storm' !ç£æš´ä¸€èˆ¬æŒç»­1-3å¤©
 !	read *,tt
       tt=100000  
 102	print *,'Electric field valid? '
@@ -130,9 +130,9 @@ PROGRAM leakage
 
 105   print *,'How to give the direction?'
 	print *,'1 - by vector,such as: (vx/n,vy/n,vz/n)'
-!      Èç¹ûÑ¡Ôñ1£¬Ö®ºó½«ÒªÊäÈëÒ»¸öÏòÁ¿£¬Èı¸ö·ÖÁ¿Í¬ËÙ¶È·½ÏòÈı·ÖÁ¿³ÉÕı±È//zhou
+!      å¦‚æœé€‰æ‹©1ï¼Œä¹‹åå°†è¦è¾“å…¥ä¸€ä¸ªå‘é‡ï¼Œä¸‰ä¸ªåˆ†é‡åŒé€Ÿåº¦æ–¹å‘ä¸‰åˆ†é‡æˆæ­£æ¯”//zhou
 	print *,'2 - by pitch angle and gyrophase'
-!      Èç¹ûÑ¡Ôñ2£¬Ö®ºó½«ÒªÊäÈëÍ¶ÖÀ½ÇºÍÏàÎ»½Ç//zhou
+!      å¦‚æœé€‰æ‹©2ï¼Œä¹‹åå°†è¦è¾“å…¥æŠ•æ·è§’å’Œç›¸ä½è§’//zhou
 !	read *, vorp
 	vorp=1
 
@@ -147,7 +147,7 @@ PROGRAM leakage
       print *, 'Pitch angle (deg):'	 
 !      read *, pitch
 	read *,pitchh
-      print *, 'Enter gyrophase (deg):'  !³õÊ¼ÏàÎ»½Ç
+      print *, 'Enter gyrophase (deg):'  !åˆå§‹ç›¸ä½è§’
 !      print *, 'Relative to the intersection line of GSM XY plane to'
 !      print *, 'the plane that is perependicular to the magnetic field'
 !      print *, 'vector and containes the intersection point of the'
@@ -176,8 +176,8 @@ PROGRAM leakage
 !	read *, t0
        t0=0
 
-!     ¿ÉÄÜ»áÊä³ö¹ı¶àµÄÊı¾İ£¬ËùÒÔ¿ÉÒÔ¿¼ÂÇÃ¿¼ÆËã¶àÉÙ²½Êä³öÒ»´Î
-!     ÍÆ¼ö¶ÔÓÚ±±Ïò´Å³¡È¡10£¬¶ÔÓÚÄÏÏò´Å³¡È¡1
+!     å¯èƒ½ä¼šè¾“å‡ºè¿‡å¤šçš„æ•°æ®ï¼Œæ‰€ä»¥å¯ä»¥è€ƒè™‘æ¯è®¡ç®—å¤šå°‘æ­¥è¾“å‡ºä¸€æ¬¡
+!     æ¨èå¯¹äºåŒ—å‘ç£åœºå–10ï¼Œå¯¹äºå—å‘ç£åœºå–1
 	print *, 'How many times calculation will you output once?'
 !	read *, outputonce
 !	outputonce=1
@@ -195,7 +195,7 @@ PROGRAM leakage
       me= 9.109389699999999d-31
       !  model parameters
 	  
-! open files and record initial values of some parameters(½á¹û´æÈë´¦£©
+! open files and record initial values of some parameters(ç»“æœå­˜å…¥å¤„ï¼‰
 !      OPEN(10,FILE='H_L_E.txt')
 !      OPEN(20,FILE='H_log.txt')
       if(vorp.EQ.2) then
@@ -258,7 +258,7 @@ PROGRAM leakage
             vstart(4)=Xstart
 	        vstart(5)=Ystart
             vstart(6)=Zstart
-            ! SUBROUTINE ouf   save the particle velocity/ position and electromagentic fields in the FSD.txt
+            ! SUBROUTINE outf   save the particle velocity/ position and electromagentic fields in the FSD.txt
             ! SUBROUTINE Bfield    the magnetic field (including both the background and wave fields)
             ! SUBROUTINE Efield    the wave electric field
         CALL rkdumb(t0,T_end,vstart)	!calculate the sigle particle trajectory
@@ -309,7 +309,7 @@ PROGRAM leakage
       Dy=15.0
 
       ftf=1.0
-      frf=1.0     !15 ??Ê²Ã´ÒâË¼
+      frf=1.0     !15 ??ä»€ä¹ˆæ„æ€
       Af=0.0      !98	??
 
       AA=Af
@@ -323,10 +323,10 @@ PROGRAM leakage
 	 posi(i)=v(i+3)
 10    CONTINUE
 
-! calculate initial magnetic field (¼ÆËã¿ªÊ¼µÄ´Å³¡£©
+! calculate initial magnetic field (è®¡ç®—å¼€å§‹çš„ç£åœºï¼‰
       CALL Bfield(posi,t,Bf)
 
-!  Calculate initial velocity£¨¼ÆËã³õÊ¼ËÙ¶È£©
+!  Calculate initial velocityï¼ˆè®¡ç®—åˆå§‹é€Ÿåº¦ï¼‰
       CALL init_v(energy,pitch,Bf,phi,v)
 
 ! Calculate initial s !//zhou 2002.10.12 
@@ -344,10 +344,10 @@ PROGRAM leakage
 	 p(i)=v(i-2)
 4     continue
 	  
-!  Tc - gyroperiod £¨»ØĞıÖÜÆÚ£©
+!  Tc - gyroperiod ï¼ˆå›æ—‹å‘¨æœŸï¼‰
       Tc=2.0*pi/(qm*B0*dsqrt(Bf(1)*Bf(1)+Bf(2)*Bf(2)+Bf(3)*Bf(3)))
 
-!  Initial gyroraius (in Re)	£¨»ØĞı°ë¾¶£©
+!  Initial gyroraius (in Re)	ï¼ˆå›æ—‹åŠå¾„ï¼‰
       rgi=dsqrt(2000.*qm*energy)*Tc/(2.*pi*Re)
 
       WRITE(*, '(4x,3(A,f7.2),2(A,f6.2,A))') 'Bx=',Bf(1)*B0*1.d9,&
@@ -378,7 +378,7 @@ PROGRAM leakage
       k=0
 	m=0
 
-	DO while(dabs(t).LE.T_end)  !	 Éè¶¨³ÌĞòÔËËãÊ±¼ä£¨¿ÉÒÔÊÇÊ±¼ä»òÔËËã²½Êı£©
+	DO while(dabs(t).LE.T_end)  !	 è®¾å®šç¨‹åºè¿ç®—æ—¶é—´ï¼ˆå¯ä»¥æ˜¯æ—¶é—´æˆ–è¿ç®—æ­¥æ•°ï¼‰
 
 ! Calculate electric field at each position !//zhou 2002.10.10
        CALL Efield(posi,Bf,Ef,t)
@@ -386,13 +386,13 @@ PROGRAM leakage
 ! Save to output files
 	 	 
        CALL outf(k,m,t,Ef,Bf,v,ks)
-	 if (m.GT.30) then	! ÓÃÀ´¿ØÖÆÃ¿3000²½Êä³öÒ»´Î
+	 if (m.GT.30) then	! ç”¨æ¥æ§åˆ¶æ¯3000æ­¥è¾“å‡ºä¸€æ¬¡
 	    m=0
 	 end if
 
        if(ks.eq.1) goto 2
 
-! Calculate derivatives of v at time t	! ¼ÆËãtÊ±¿ÌµÄËÙ¶È
+! Calculate derivatives of v at time t	! è®¡ç®—tæ—¶åˆ»çš„é€Ÿåº¦
        CALL derivs(s, p, dp)
 
 ! 1/120 or 1/240 of cyclotron period for H+ or O+. Tc=2*pi/(q/m * B_size)
@@ -401,11 +401,11 @@ PROGRAM leakage
 !      h=0.0261799/(qm*B0*B_size)
        vv=p(2)*p(2)+p(3)*p(3)+p(4)*p(4)
 	 gam=dsqrt(1-(vv*v0*v0/(vc*vc)))
-!      fbÓÃÓÚÕıÍÆºÍ·´ÍÆµÄ¿ØÖÆ //zhou
+!      fbç”¨äºæ­£æ¨å’Œåæ¨çš„æ§åˆ¶ //zhou
 ! 	 h=(fb*0.261799*2/(2*qm*B0*B_size))/50.d0 	 ! h=Tc/240      
        h=fb*0.002d0*(qmsign+1.1d0)/100
        hs=h*vc*gam  ! written by zhou. The step of s. //2002.10.12
-! calculate position and velocity at time t+h	 ! ¼ÆËãt+hÊ±¼äºóµÄËÙ¶ÈºÍÎ»ÖÃ
+! calculate position and velocity at time t+h	 ! è®¡ç®—t+hæ—¶é—´åçš„é€Ÿåº¦å’Œä½ç½®
        CALL rk4(s, hs, dp, p)
 
        s=s+hs ! //zhou 2002.10.12
@@ -451,7 +451,7 @@ PROGRAM leakage
       end
 
 !  *********** SUBROUTINE RK4 ********************
-!     ÕâÀïÓ¦¸ÃÓÃÏà¶ÔÂÛ¹«Ê½°É
+!     è¿™é‡Œåº”è¯¥ç”¨ç›¸å¯¹è®ºå…¬å¼å§
       SUBROUTINE rk4(s, hs, dp, y)
       use global
 !  The subroutine is a fourth order Runge-Kutta integrator with the 
@@ -557,7 +557,7 @@ PROGRAM leakage
       CALL Efield(posi,Bf,Ef,t)
 
 !  Dv/Dt rp=q/m E0 /v0 ep=v0 B0/E0
-!  Ïà¶ÔÂÛÌõ¼şlorenzÁ¦µÄĞÎÊ½Ó¦¸Ã²»±ä°É
+!  ç›¸å¯¹è®ºæ¡ä»¶lorenzåŠ›çš„å½¢å¼åº”è¯¥ä¸å˜å§
 !       VX=p(2)
 !        VY=p(3)
 !        Vperpnorm=sqrt(VX**2+VY**2)
@@ -572,7 +572,7 @@ PROGRAM leakage
       dp(3)=qmsign*rp*(Ef(2)+ep*(p(4)*Bf(1)-p(2)*Bf(3)))/(vc*gam)
       dp(4)=qmsign*rp*(Ef(3)+ep*(p(2)*Bf(2)-p(3)*Bf(1)))/(vc*gam)
 
-!  Dr/Dt  dpp=v0/Re	   !ÓÃÀ´¸Ä±äÕıÍÆºÍ·´ÍÆµÄÌõ¼ş
+!  Dr/Dt  dpp=v0/Re	   !ç”¨æ¥æ”¹å˜æ­£æ¨å’Œåæ¨çš„æ¡ä»¶
 !      dp(5)=dpp/gam
       dp(6)=dpp*p(2)/(vc*gam)
       dp(7)=dpp*p(3)/(vc*gam)
@@ -687,10 +687,10 @@ PROGRAM leakage
 !  determine the gyroradius vector
       CALL guid_c(Ef, Bf, v, rg)
       DO 8 i=1,3
-        pg(i)=v(i+3)-rg(i)  !Ğı×ªÖĞĞÄµÄÎ»ÖÃ
+        pg(i)=v(i+3)-rg(i)  !æ—‹è½¬ä¸­å¿ƒçš„ä½ç½®
 8     CONTINUE
 
-      if(k.eq.0) then	   !ÕâÀïµÄk,kc,ks´ú±íÊ²Ã´Ñ½?kc´ú±í×ªÒ»È¦µÄ²ÎÊı,k´ú±í´ÎÊı
+      if(k.eq.0) then	   !è¿™é‡Œçš„k,kc,ksä»£è¡¨ä»€ä¹ˆå‘€?kcä»£è¡¨è½¬ä¸€åœˆçš„å‚æ•°,kä»£è¡¨æ¬¡æ•°
        kc=0
        ks=0
 !       CALL hmlt(v(4),v(5),v(6),h_mlt)
@@ -699,7 +699,7 @@ PROGRAM leakage
       vv=(v(1)*v(1)+v(2)*v(2)+v(3)*v(3))*v0*v0
 	gam=dsqrt(1-vv/(vc*vc))
       enem=(vc*vc)/1000.d0/qm*(1/gam-1) 
-!	 ÕâÀïµÄÄÜÁ¿ÊÇ·ñÓ¦ÓÃÏà¶ÔÂÛ?
+!	 è¿™é‡Œçš„èƒ½é‡æ˜¯å¦åº”ç”¨ç›¸å¯¹è®º?
 !      enem=(v(1)*v(1)+v(2)*v(2)+v(3)*v(3))*v0*v0/2000.d0/qm
       
 	 tm=t
@@ -763,7 +763,7 @@ PROGRAM leakage
 !	     write(10,16) v(4),v(5),v(6),Pangel,t,enem
 	  end if
 
-!      ¼ÆËãpitch angleÒÔ±ãÊä³ö//zhou
+!      è®¡ç®—pitch angleä»¥ä¾¿è¾“å‡º//zhou
 	speed(4)=dsqrt(v(1)*v(1)+v(2)*v(2)+v(3)*v(3))
 	speed(1)=v(1)/speed(4)
 	speed(2)=v(2)/speed(4)
@@ -781,10 +781,12 @@ PROGRAM leakage
 
 	if(abs(mod(m-1,outputonce)).LE.0.001) then
         
-!      Ã¿outputonce²½Êä³öÒ»´Î //zhou
+!      æ¯outputonceæ­¥è¾“å‡ºä¸€æ¬¡ //zhou
 
 	!  write(20,18) v(1),v(2),v(3),v(4),v(5),v(6),t,&
    !  &enem,pitchangle  !,fai,LATIT,SIGMA2,ppwhere
+   ! to reduce the size of output file, only part of trajectory is recorded.
+   ! to obtain the whole trajectory, the 'if; end if' sentence below can be deleted.
       if(abs(t+ttotal).LE.0.01) then
         write(40,20) t,v(1),v(2),v(3),enem,Bf(1),Bf(2),v(6)
       end if
@@ -846,7 +848,7 @@ PROGRAM leakage
 	 vstart(1)=v*vvector(1)/vtotal
 	 vstart(2)=v*vvector(2)/vtotal
 	 vstart(3)=v*vvector(3)/vtotal
-	else !ÒÔÏÂÎªÔ­ÓĞµÄ³ÌĞò//zhou
+	else !ä»¥ä¸‹ä¸ºåŸæœ‰çš„ç¨‹åº//zhou
 
       if(pitch.ne.90.0D0) then 
         v_para=v*dcos(pitch*rad)
@@ -876,7 +878,7 @@ PROGRAM leakage
       Bt=dsqrt(Bf(3)*Bf(3)+B_azimuth*B_azimuth)
       theta=dacos(Bf(3)/Bt)
       if(B_azimuth.ne.0.0) then
-!       fai=dasin(Bf(2)/B_azimuth)     !¸ÄÎªÏÂÒ»ĞĞ£¬ËÆºõÕâÀïÓĞÑÏÖØ´íÎó£¡£¡//zhou
+!       fai=dasin(Bf(2)/B_azimuth)     !æ”¹ä¸ºä¸‹ä¸€è¡Œï¼Œä¼¼ä¹è¿™é‡Œæœ‰ä¸¥é‡é”™è¯¯ï¼ï¼//zhou
         fai1=dacos(Bf(1)/B_azimuth)
 	  fai2=dasin(Bf(2)/B_azimuth)
       else
