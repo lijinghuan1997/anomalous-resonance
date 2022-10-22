@@ -1,5 +1,5 @@
 %% load data from txt file
-path='C:\Users\��\Documents\Visual Studio 2013\Projects\ceshiEMIC\ceshiEMIC\FSD.txt';
+path='C:\Users\Àî¾©å¾\Documents\Visual Studio 2013\Projects\ceshiEMIC\ceshiEMIC\FSD.txt';
 [t,vx,vy,vz,enem,Bx,By,Z]=textread(path,'%f %f %f %f %f %f %f %f','delimiter',' ');
 E1=1/2*1.67*1e-27*(vx.^2+vy.^2+vz.^2)/1.6*1e19*1e10;
 % change velocity into the spacecraft rest frame
@@ -76,7 +76,7 @@ save datasave200eV_4nT_xyshift_PA90_65point.mat datasave200eV
 mp=1.67*1e-27;
 qi=1.6*1e-19;
 Tperp=130;
-Tpara=50;
+Tpara=130;
 xwidth=0.75;
 ywidth=0.1;
 vxpla=-20e3;
