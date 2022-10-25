@@ -225,7 +225,7 @@ PROGRAM leakage
      &ticle'
        
 
-       DO Ennum=19,19,1   ! energy channel 
+       DO Ennum=15,15,1   ! energy channel 
         DO beta_=1,1,1   ! control the particle pitch angle in spacecraft rest frame (FAC coordinate)
         DO wnum=1,65,1   ! control the spacecraft position or the backward tracing time
         
