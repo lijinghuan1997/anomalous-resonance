@@ -52,7 +52,7 @@ gyro=12;       % particle gyrophase number
 xxx=pt*timepoint*gyro*(ener-1);
 maxindex=maxindextotal(gyro*timepoint*(pt-1)+1+xxx:gyro*timepoint*pt+xxx); % the end channel +1
 
-datasave574eV=cell(gyro,timepoint);
+datasave200eV=cell(gyro,timepoint);
 for i=1:timepoint*gyro 
     if i==timepoint*gyro && ener==1
         index=maxindex(i):length(t);
@@ -84,7 +84,7 @@ vypla=10e3;
 vzpla=35e3;
 timepoint=65;
 gyro=12;
-const=8.5*1e6*(mp/2/pi/130/qi)^(2/2)*(mp/2/pi/50/qi)^(1/2)*1e13;
+const=8.5*1e6*(mp/2/pi/130/qi)^(2/2)*(mp/2/pi/130/qi)^(1/2)*1e13;
 % the initial distribution function
 f=@(vx,vy,vz)exp(-mp/2*(vx-vxpla).^2/Tperp/qi-mp/2*(vy-vypla).^2/Tperp/qi-mp/2*(vz-vzpla).^2/Tpara/qi);
 psd=zeros(gyro,timepoint);
